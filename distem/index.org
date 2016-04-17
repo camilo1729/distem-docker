@@ -1,0 +1,15 @@
+* Deploying Distem with Docker
+
+
+First build the image or you can download it inside Grid'5000
+
+#+BEGIN_SRC
+docker build -t distem .
+#+END_SRC
+
+Run the image with the following line, which will guarantee that Distem has the enough priveleges for
+creating virtual infrastructures:
+
+#+BEGIN_SRC
+docker run --privileged -v /sys:/sys -v /lib/modules:/lib/modules --net=host distem
+#+END_SRC

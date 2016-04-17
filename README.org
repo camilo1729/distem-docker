@@ -1,0 +1,22 @@
+* docker-g5k
+
+This the first attempt to use Docker for provisioning experiments in Grid'50000.
+The idea is to run Docker images as natively as possible and as transparently as possible.
+
+The workflow would be to have an special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]] and
+another tools will run docker, pull and image and start with special parameters to run as
+closer to the machine as possible
+
+This repository will serve as well as a way to document all the experiences of making
+a certain type of software stack deployable with Docker.
+
+This repository contain:
+
+- Deployment scripts to setup docker images on Grid'5000 nodes
+
+- Dockerfiles that were successfully deployable on Grid'5000
+
+* Dockerfiles
+
+- Distem [[./distem/index.org][here
+]]
