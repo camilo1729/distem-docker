@@ -1,14 +1,14 @@
 * docker-g5k
 
-This the first attempt to use Docker for provisioning experiments in Grid'50000.
+This is the first attempt to use Docker for provisioning experiments in Grid'50000.
 The idea is to run Docker images as natively as possible and as transparently as possible.
-
-The workflow would be to have an special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]] and
-another tools will run docker, pull and image and start with special parameters to run as
-closer to the machine as possible
-
 This repository will serve as well as a way to document all the experiences of making
 a certain type of software stack deployable with Docker.
+
+In the workflow there would be an special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]].
+This image will have already =docker= installed and it will be configured to listen SSH connection over port 4444.
+This is for leaving each Docker container have its own SSH daemon running and
+it will be directly accessible using the hostname of the machine.
 
 This repository contain:
 
@@ -16,7 +16,24 @@ This repository contain:
 
 - Dockerfiles that were successfully deployable on Grid'5000
 
+* Workflow
+
+Currently, the workflow is composed of manual steps.
+First you have to deploy with the special Kadeploy imaged:
+
+#+BEGIN_SRC
+kadeploy3 -f $OAR_NODEFILE -k -a http://public.lyon.grid5000.fr/~cruizsanabria/jessie-docker.yaml
+#+END_SRC
+
+For logging in into the machine you have to use the port 4444:
+
+#+BEGIN_SRC
+ssh -p 4444 root@$MACHINE
+#+END_SRC
+
 * Dockerfiles
 
-- Distem [[./distem/index.org][here
-]]
+
+
+
+- Distem [[./distem/index.org][here]]

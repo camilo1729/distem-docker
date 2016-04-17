@@ -7,6 +7,13 @@ First build the image or you can download it inside Grid'5000
 docker build -t distem .
 #+END_SRC
 
+or
+
+#+BEGIN_SRC
+wget http://public.lyon.grid5000.fr/~cruizsanabria/distem_docker.tar
+docker load < distem_docker.tar
+#+END_SRC
+
 Run the image with the following line, which will guarantee that Distem has the enough priveleges for
 creating virtual infrastructures:
 
