@@ -40,11 +40,11 @@ we have to add special options to =docker run=:
 - =--privileged= It will enable to access all devices on the host. Additionally,
                  special directories such as =/sys/= will be mounted =rw= if passed using volumes
 
-- =-v /sys:/sys= It will mount 'sys' filesystem (Optinal)
+- =-v /sys:/sys= It will mount 'sys' file system (Optional)
 
 - =-v /lib/modules:lib/modules=  It will enable to load modules inside the container (Optional)
 
-For more details take at look to the next section
+For more details take a look to the next section
 * Dockerfiles
 
 
