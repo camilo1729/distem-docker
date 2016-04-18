@@ -1,12 +1,12 @@
 * docker-g5k
 
 This is the first attempt to use Docker for provisioning experiments in Grid'50000.
-The idea is to run Docker images as natively as possible and as transparently as possible.
+The idea is to run Docker images as natively and as transparently as possible.
 This repository will serve as well as a way to document all the experiences of making
-a certain type of software stack deployable with Docker.
+certain types of software stacks deployable with Docker.
 
-The workflow is composed of an special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]].
-This image has  =docker= installed and it is configured to listen SSH connection over port 4444.
+The workflow is composed of a special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]].
+This image has  =docker= installed and it is configured to listen SSH connections over port 4444.
 This is for leaving each Docker container have its own SSH daemon running and
 be directly accessible using the hostname of the machine.
 
@@ -14,18 +14,18 @@ This repository will contain:
 
 - Deployment scripts to setup docker images on Grid'5000 nodes (in progress ...)
 
-- Dockerfiles that were successfully deployable on Grid'5000 (in progress ...)
+- Dockerfiles that were successfully deployed on Grid'5000 (in progress ...)
 
 * Workflow
 
 Currently, the workflow is composed of manual steps.
-First you have to deploy with the special Kadeploy imaged:
+First you have to deploy with a special Kadeploy image:
 
 #+BEGIN_SRC
 kadeploy3 -f $OAR_NODEFILE -k -a http://public.lyon.grid5000.fr/~cruizsanabria/jessie-docker.yaml
 #+END_SRC
 
-For logging in into the machine you have to use the port 4444:
+For logging in into the machine, you have to use the port 4444:
 
 #+BEGIN_SRC
 ssh -p 4444 root@$MACHINE
