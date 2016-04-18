@@ -1,7 +1,13 @@
 * Deploying Distem with Docker
 
+First clone the repository and go to the distem directory:
 
-First build the image:
+#+BEGIN_SRC sh
+git clone https://github.com/camilo1729/docker-g5k.git
+cd docker-g5k/distem/
+#+END_SRC
+
+Then, build the image:
 
 #+BEGIN_SRC
 docker build -t distem .
@@ -14,9 +20,11 @@ wget http://public.lyon.grid5000.fr/~cruizsanabria/distem_docker.tar
 docker load < distem_docker.tar
 #+END_SRC
 
-Run the image with the following line, which will guarantee that Distem has the enough priveleges for
+Run the image with the following line, which will guarantee that Distem has enough priveleges for
 creating virtual infrastructures:
 
 #+BEGIN_SRC
 docker run --privileged -v /sys:/sys -v /lib/modules:/lib/modules --net=host distem
 #+END_SRC
+
+This is still work in progress ...
