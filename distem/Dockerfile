@@ -2,14 +2,14 @@ FROM debian:jessie
 MAINTAINER Cristian Ruiz <cristian.ruiz@inria.fr>
 
 RUN apt-get update && apt-get install -y openssh-server
-RUN apt-get update && apt-get install -y libnet-ifconfig-wrapper-perl kmod vim wget
+RUN apt-get apt-get install -y libnet-ifconfig-wrapper-perl kmod vim wget
 # Adding Distem
 RUN echo "deb http://distem.gforge.inria.fr/deb ./ \
          \n deb-src http://distem.gforge.inria.fr/deb ./"  >> /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get build-dep -y --force-yes distem
-RUN apt-get update && apt-get install -y git rake
+RUN apt-get apt-get install -y git rake
 
 WORKDIR /tmp
 

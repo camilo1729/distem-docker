@@ -5,16 +5,16 @@ The idea is to run Docker images as natively as possible and as transparently as
 This repository will serve as well as a way to document all the experiences of making
 a certain type of software stack deployable with Docker.
 
-In the workflow there would be an special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]].
-This image will have already =docker= installed and it will be configured to listen SSH connection over port 4444.
+The workflow is composed of an special base image which boots with [[http://kadeploy3.gforge.inria.fr/][Kadeploy]].
+This image has  =docker= installed and it is configured to listen SSH connection over port 4444.
 This is for leaving each Docker container have its own SSH daemon running and
-it will be directly accessible using the hostname of the machine.
+be directly accessible using the hostname of the machine.
 
-This repository contain:
+This repository will contain:
 
-- Deployment scripts to setup docker images on Grid'5000 nodes
+- Deployment scripts to setup docker images on Grid'5000 nodes (in progress ...)
 
-- Dockerfiles that were successfully deployable on Grid'5000
+- Dockerfiles that were successfully deployable on Grid'5000 (in progress ...)
 
 * Workflow
 
@@ -31,9 +31,23 @@ For logging in into the machine you have to use the port 4444:
 ssh -p 4444 root@$MACHINE
 #+END_SRC
 
+Then, you use Docker for running the desired container.
+In order to make a Docker container run as closer to machine performance and privileges as possible,
+we have to add special options to =docker run=:
+
+- =--net=host= It will inherit the host network namespace, so we will have access to all network devices
+               natively
+- =--privileged= It will enable to access all devices on the host. Additionally,
+                 special directories such as =/sys/= will be mounted =rw= if passed using volumes
+
+- =-v /sys:/sys= It will mount 'sys' filesystem (Optinal)
+
+- =-v /lib/modules:lib/modules=  It will enable to load modules inside the container (Optional)
+
+For more details take at look to the next section
 * Dockerfiles
 
 
 
 
-- Distem [[./distem/index.org][here]]
+- Distem: [[./distem/index.org][Description]], [[./distem/Dockerfile][Dockerfile]]

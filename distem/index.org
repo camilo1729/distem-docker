@@ -1,13 +1,13 @@
 * Deploying Distem with Docker
 
 
-First build the image or you can download it inside Grid'5000
+First build the image:
 
 #+BEGIN_SRC
 docker build -t distem .
 #+END_SRC
 
-or
+or you can download it inside Grid'5000:
 
 #+BEGIN_SRC
 wget http://public.lyon.grid5000.fr/~cruizsanabria/distem_docker.tar
